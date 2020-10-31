@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/chat.socket.io/static/css/main.5ededee0.chunk.css",
-    "main.js": "/chat.socket.io/static/js/main.74a5b73e.chunk.js",
-    "main.js.map": "/chat.socket.io/static/js/main.74a5b73e.chunk.js.map",
+    "main.js": "/chat.socket.io/static/js/main.d88438ea.chunk.js",
+    "main.js.map": "/chat.socket.io/static/js/main.d88438ea.chunk.js.map",
     "runtime-main.js": "/chat.socket.io/static/js/runtime-main.56159de2.js",
     "runtime-main.js.map": "/chat.socket.io/static/js/runtime-main.56159de2.js.map",
-    "static/js/2.f694c61d.chunk.js": "/chat.socket.io/static/js/2.f694c61d.chunk.js",
-    "static/js/2.f694c61d.chunk.js.map": "/chat.socket.io/static/js/2.f694c61d.chunk.js.map",
+    "static/js/2.7e018bec.chunk.js": "/chat.socket.io/static/js/2.7e018bec.chunk.js",
+    "static/js/2.7e018bec.chunk.js.map": "/chat.socket.io/static/js/2.7e018bec.chunk.js.map",
     "index.html": "/chat.socket.io/index.html",
-    "precache-manifest.d8b12b13d557248d863709c3e09fde0d.js": "/chat.socket.io/precache-manifest.d8b12b13d557248d863709c3e09fde0d.js",
+    "precache-manifest.3aa12c0770c2870cafa0c6296e49a29e.js": "/chat.socket.io/precache-manifest.3aa12c0770c2870cafa0c6296e49a29e.js",
     "service-worker.js": "/chat.socket.io/service-worker.js",
     "static/css/main.5ededee0.chunk.css.map": "/chat.socket.io/static/css/main.5ededee0.chunk.css.map",
-    "static/js/2.f694c61d.chunk.js.LICENSE.txt": "/chat.socket.io/static/js/2.f694c61d.chunk.js.LICENSE.txt"
+    "static/js/2.7e018bec.chunk.js.LICENSE.txt": "/chat.socket.io/static/js/2.7e018bec.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.56159de2.js",
-    "static/js/2.f694c61d.chunk.js",
+    "static/js/2.7e018bec.chunk.js",
     "static/css/main.5ededee0.chunk.css",
-    "static/js/main.74a5b73e.chunk.js"
+    "static/js/main.d88438ea.chunk.js"
   ]
 }
