@@ -1,4 +1,4 @@
-import {socketAPI} from './api'
+import {socketAPI} from '../api'
 
 const initialState = {
     messages: [] as Array<any>,

@@ -3,16 +3,10 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
-import {combineReducers, createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
-import {chatReducer} from './chat-reducer'
-import thunk from 'redux-thunk'
+import {store} from './bll/store'
 
-const rootReducer = combineReducers({chat: chatReducer})
-export type AppStateType = ReturnType<typeof rootReducer>
-const store = createStore(rootReducer, applyMiddleware(thunk))
-// @ts-ignore
-window.store = store
+
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>

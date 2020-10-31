@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import './App.css'
 import {useDispatch} from 'react-redux'
-import {createConnectionSocket, destroyConnectionSocket, sentName} from './chat-reducer'
+import {createConnectionSocket, destroyConnectionSocket, sentName} from './reducer/chat-reducer'
 import {Button, Container, FormControl, Grid, TextField} from '@material-ui/core'
 import {makeStyles} from '@material-ui/styles'
 import {Cards, Header} from './components'

@@ -2,8 +2,8 @@ import {Button, Card, CardContent, FormControl, Paper, TextField, Typography, Gr
 import React, {useState} from 'react'
 import {useStyles} from '../App'
 import {useDispatch, useSelector} from 'react-redux'
-import {AppStateType} from '../index'
-import {clientTyping, sentMessage} from '../chat-reducer'
+import {clientTyping, sentMessage} from '../reducer/chat-reducer'
+import {AppStateType} from '../bll/store'
 
 export const Cards = () => {
     const messages = useSelector((state: AppStateType) => state.chat.messages)
