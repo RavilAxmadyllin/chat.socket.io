@@ -22,7 +22,7 @@ function App() {
 
     const setNameHandler = () => {
         if (name.trim()) {
-            dispatch(sentName(name))
+            dispatch(sentName({name}))
             setChatActive(true)
             setName('')
         }

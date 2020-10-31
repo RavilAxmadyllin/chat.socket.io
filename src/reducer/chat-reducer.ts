@@ -1,67 +1,51 @@
 import {socketAPI} from '../api'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import {Message, UserType} from '../utils-type/utils-type'
 
-const initialState = {
-    messages: [] as Array<any>,
-    userType: []  as Array<any>,
-    users: [] as Array<string>
-}
-export const chatReducer = (state = initialState, action: any) => {
-    switch (action.type) {
-        case 'messages-received': {
-            return {...state, messages: action.messages}
-        }
-        case 'message-received': {
-            return {
-                ...state,
-                messages: [...state.messages, action.message],
-                userType: state.userType.filter((u: any) => u.id !== action.message.user.id)
-            }
-        }
-        case 'user-typing': {
-            return {
-                ...state,
-                userType: [...state.userType.filter((u: any) => u.id !== action.user.id), action.user]
-            }
-        }
-        case 'add-user': {
-            return {
-                ...state,
-                users: action.user
-            }
-        }
-        default:
-            return state
-    }
-}
-export const messagesReceived = (messages: any) => ({type: 'messages-received', messages})
-export const newMessageReceived = (message: any) => ({type: 'message-received', message})
-export const userTyping = (user: any) => ({type: 'user-typing', user})
-export const addUser = (user: any) => ({type: 'add-user', user})
-export const createConnectionSocket = () => (dispatch: any) => {
+export const createConnectionSocket = createAsyncThunk('chat/create-socket', (param, thunkAPI) => {
     socketAPI.createConnection()
 
     socketAPI.subscribe((messages) => {
-        dispatch(messagesReceived(messages))
+        thunkAPI.dispatch(messagesReceived({messages}))
     }, (message) => {
-        dispatch(newMessageReceived(message))
+        thunkAPI.dispatch(newMessageReceived({message}))
     }, (user) => {
-        dispatch(userTyping(user))
-    },(user) => {
-        debugger
-        dispatch(addUser(user))
+        thunkAPI.dispatch(userTyping({user}))
     })
-}
-
-export const sentName = (name: string) => (dispatch: any) => {
-    socketAPI.sentName(name)
-}
-export const clientTyping = () => (dispatch: any) => {
-    socketAPI.clientType()
-}
-export const sentMessage = (message: string) => (dispatch: any) => {
-    socketAPI.sentMessage(message)
-}
-export const destroyConnectionSocket = () => (dispatch: any) => {
+})
+export const destroyConnectionSocket = createAsyncThunk('chat/destroy-socket', () => {
     socketAPI.destroyConnection()
-
+})
+export const sentName = createAsyncThunk('chat/sentName', (param: { name: string }) => {
+    socketAPI.sentName(param.name)
+})
+export const clientTyping = createAsyncThunk('chat/clientTyping', () => socketAPI.clientType())
+export const sentMessage = createAsyncThunk('chat/sentMessage', (param: { message: string }) => {
+    socketAPI.sentMessage(param.message)
+})
+const initialState = {
+    messages: [] as Array<Message>,
+    userType: [] as Array<UserType>
 }
+const slice = createSlice({
+    name: 'chat',
+    initialState,
+    reducers: {
+        messagesReceived: ((state, action) => {
+            state.messages = action.payload.messages
+        }),
+        newMessageReceived: ((state, action) => {
+            state.messages.push(action.payload.message)
+            state.userType = state.userType.filter((u: any) => u.id !== action.payload.message.user.id)
+        }),
+        userTyping: ((state, action) => {
+            state.userType.push(action.payload.user)
+        })
+    }
+})
+const {messagesReceived, newMessageReceived, userTyping} = slice.actions
+export const chatReducer = slice.reducer
+
+
+
+

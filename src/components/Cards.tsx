@@ -13,7 +13,7 @@ export const Cards = () => {
     const classes = useStyles()
 
     const sendMessageHandler = () => {
-        dispatch(sentMessage(value))
+        dispatch(sentMessage({message: value}))
         setValue('')
     }
     const clientTypingHandler = () => {
