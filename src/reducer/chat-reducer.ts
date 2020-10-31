@@ -36,14 +36,18 @@ const slice = createSlice({
         }),
         newMessageReceived: ((state, action) => {
             state.messages.push(action.payload.message)
-            state.userType = state.userType.filter((u: any) => u.id !== action.payload.message.user.id)
+            const index = state.userType.findIndex((u) => u.id === action.payload.user.id)
+            if(index !== -1) {
+                state.userType.splice(index, 1)
+            }
+
         }),
         userTyping: ((state, action) => {
             state.userType.push(action.payload.user)
         })
     }
 })
-const {messagesReceived, newMessageReceived, userTyping} = slice.actions
+export const {messagesReceived, newMessageReceived, userTyping} = slice.actions
 export const chatReducer = slice.reducer
 
 

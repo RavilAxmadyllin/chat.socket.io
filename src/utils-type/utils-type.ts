@@ -1,9 +1,6 @@
 
 export type Message = {
     message: string
-    user: {
-        id: string
-        name: string
-    }
+    user: UserType
 }
 export type UserType = {name: string, id: string}
